@@ -1,9 +1,9 @@
 import express from "express";
 
-const configViewEngine = () => {
-  application.use(express.static("./src/public"));
-  application.set("view engine", "ejs");
-  application.set("views", "./src/views")
+const configViewEngine = (app) => {
+  app.use(express.static("./src/public"));
+  app.set("view engine", "ejs");
+  app.set("views", "./src/views")
 };
 
 module.exports = configViewEngine;
