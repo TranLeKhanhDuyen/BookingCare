@@ -11,6 +11,11 @@ const getHomePage = async (req, res) => {
   }
 };
 
+const getCRUD = (req, res) => {
+  return res.render('crud.ejs');
+};
+
 module.exports = {
-  getHomePage: getHomePage
+  getHomePage: getHomePage,
+  getCRUD: getCRUD
 };
