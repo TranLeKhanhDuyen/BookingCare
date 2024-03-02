@@ -1,9 +1,9 @@
-const {Sequelize} = require('sequelize')
+const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('test', 'root', null, {
   host: 'localhost',
   dialect: 'mysql',
-  "logging": false
+  logging: false
 });
 
 const connectDB = async () => {
