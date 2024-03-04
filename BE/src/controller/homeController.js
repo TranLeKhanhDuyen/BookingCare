@@ -52,11 +52,22 @@ const putCRUD = async (req, res) => {
   });
 };
 
+const deleteCRUD = async (req, res) => {
+  const id = req.query.id;
+  if (id) {
+    await CRUDService.deleteUserById(id);
+    return res.send('Delete the user succed!');
+  } else {
+    return res.send('User not found!');
+  }
+};
+
 module.exports = {
   getHomePage: getHomePage,
   getCRUD: getCRUD,
   postCRUD: postCRUD,
   displayGetCRUD: displayGetCRUD,
   getEditCRUD: getEditCRUD,
-  putCRUD: putCRUD
+  putCRUD: putCRUD,
+  deleteCRUD: deleteCRUD
 };
