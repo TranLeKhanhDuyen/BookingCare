@@ -36,9 +36,11 @@ const hashUserPassword = (password) => {
 };
 
 const getAllUser = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async(resolve, reject) => {
     try {
-      const users = db.User.findAll();
+      const users = db.User.findAll({
+        raw: true
+      });
       resolve(users);
     } catch (e) {
       reject(e);
