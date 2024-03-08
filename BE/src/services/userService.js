@@ -1,5 +1,4 @@
 import bcrypt from 'bcryptjs';
-import { where } from 'sequelize';
 import db from '../models/index';
 
 const handleUserLogin = (email, password) => {
@@ -18,7 +17,7 @@ const handleUserLogin = (email, password) => {
 
         if (user) {
           //compare password
-          const check = await bcrypt.compareSync(password, user.password);
+          const check = bcrypt.compareSync(password, user.password);
           if (check) {
             //check password
             userData.errCode = 0; //have password
