@@ -4,6 +4,9 @@ import viewEngine from './config/viewEngine';
 import initWebRoutes from './route/web';
 import connectDB from './config/connectDB';
 import cors from 'cors';
+import { ExceptionHandler } from './core/handlers/exception.handler';
+import { routes } from './routes';
+import { ENV_CONFIG } from './core/config/env-config';
 
 require('dotenv').config();
 
@@ -15,11 +18,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 viewEngine(app);
 initWebRoutes(app);
+app.use(ENV_CONFIG.API_PREFIX, routes);
+ExceptionHandler.notFoundHandler(app);
+app.use(ExceptionHandler.errorHandler);
 
 connectDB();
 
-const port = process.env.PORT;
-
-app.listen(port, () => {
-  console.log('runing with port: ' + port);
+app.listen(ENV_CONFIG.PORT, () => {
+  console.log(`Server is running at http://localhost:${ENV_CONFIG.PORT}`);
 });

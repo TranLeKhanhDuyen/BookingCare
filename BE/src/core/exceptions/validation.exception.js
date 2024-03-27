@@ -1,0 +1,23 @@
+import { AppException } from './app.exception';
+import { StatusCodes } from 'http-status-codes';
+import { ValidationError } from 'joi';
+
+export class ValidationException extends AppException {
+  /**
+   * @param {ValidationError} error
+   */
+  constructor(error) {
+    super(StatusCodes.UNPROCESSABLE_ENTITY);
+    this.error = error;
+  }
+
+  getError() {
+    const errorDetails = this.error.details[0];
+    const key = errorDetails.path[0].toString();
+    let code = errorDetails.type.toUpperCase();
+    if (code.includes('.')) code = code.split('.').at(-1);
+    const message = errorDetails.message;
+
+    return { key, code, message };
+  }
+}
