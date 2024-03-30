@@ -1,18 +1,18 @@
-import { NextFunction, Request, Response } from 'express';
-import Joi, { SchemaMap } from 'joi';
+import express from 'express';
+import Joi from 'joi';
 
 import { ValidationException } from '../exceptions/validation.exception';
 
 export class ValidatorHelper {
   /**
-   * @param {SchemaMap} schemaMap
+   * @param {Joi.SchemaMap} schemaMap
    */
   static create(schemaMap) {
     const schema = Joi.object(schemaMap).required();
     /**
-     * @param {Request} req
-     * @param {Response} res
-     * @param {NextFunction} next
+     * @param {express.Request} req
+     * @param {express.Response} res
+     * @param {express.NextFunction} next
      */
     return (req, res, next) => {
       const { error, value } = schema.validate(req.body);

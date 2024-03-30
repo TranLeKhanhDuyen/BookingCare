@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import { ERROR_CODE } from '../constants/error-code';
 import { AppException } from '../exceptions/app.exception';
 import { StatusCodes } from 'http-status-codes';
@@ -6,8 +6,8 @@ import { StatusCodes } from 'http-status-codes';
 export class ExceptionHandler {
   static notFoundHandler(express) {
     /**
-     * @param {Request} req
-     * @param {Response} res
+     * @param {express.Request} req
+     * @param {express.Response} res
      */
     express.use('*', (req, res) => {
       return res.status(StatusCodes.NOT_FOUND).json({
@@ -21,9 +21,9 @@ export class ExceptionHandler {
 
   /**
    * @param {Error} error
-   * @param {Request} req
-   * @param {Response} res
-   * @param {NextFunction} next
+   * @param {express.Request} req
+   * @param {express.Response} res
+   * @param {express.NextFunction} next
    * @example
    * ```js
    * {

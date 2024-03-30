@@ -1,10 +1,10 @@
-import { AppException } from './app.exception';
 import { StatusCodes } from 'http-status-codes';
-import { ValidationError } from 'joi';
+import Joi from 'joi';
+import { AppException } from './app.exception';
 
 export class ValidationException extends AppException {
   /**
-   * @param {ValidationError} error
+   * @param {Joi.ValidationError} error
    */
   constructor(error) {
     super(StatusCodes.UNPROCESSABLE_ENTITY);
