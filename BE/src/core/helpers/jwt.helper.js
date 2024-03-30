@@ -1,37 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
-import * as jwt from 'jsonwebtoken';
+import express from 'express';
+import jwt from 'jsonwebtoken';
 import { userService } from '../../modules/user/user.service';
-import { ENV_CONFIG } from '../config/env-config';
+import { JWT_EXPIRES_IN, JWT_SECRET } from '../config/env-config';
 import { UnauthorizeException } from '../exceptions/unauthorize.exception';
 
 export class JwtHelper {
-  /**
-   *
-   * @param {Request} req
-   * @param {Response} res
-   * @param {NextFunction} next
-   * @returns
-   */
-  static async authMiddleware(req, res, next) {
-    try {
-      const authorization = req.headers.authorization;
-      if (!authorization) return next(new UnauthorizeException());
-
-      const token = authorization.replace(/^Bearer\s+/, '');
-      const data = JwtHelper.verify(token);
-      if (!data?.id) return next(new UnauthorizeException());
-
-      const user = await userService.getUserById(data.id);
-      if (!user) return next(new UnauthorizeException());
-
-      req.user = user;
-      req.jwtToken = token;
-      next();
-    } catch (e) {
-      next(e);
-    }
-  }
-
   /**
    * ```ts
    * interface JwtSignOptions extends SignOptions {
@@ -91,7 +64,7 @@ export class JwtHelper {
    * @returns {string | Buffer | jwt.Secret}
    */
   static #getSecretKey(options) {
-    return options?.secret || ENV_CONFIG.JWT_SECRET;
+    return options?.secret || JWT_SECRET;
   }
 
   /**
@@ -99,6 +72,6 @@ export class JwtHelper {
    * @returns {string | number | undefined}
    */
   static #getExpiresIn(options) {
-    return options?.expiresIn || ENV_CONFIG.JWT_EXPIRES_IN;
+    return options?.expiresIn || JWT_EXPIRES_IN;
   }
 }

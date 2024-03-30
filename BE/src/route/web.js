@@ -21,5 +21,3 @@ const initWebRouters = (app) => {
 
   return app.use('/', router);
 };
-
-module.exports = initWebRouters;
