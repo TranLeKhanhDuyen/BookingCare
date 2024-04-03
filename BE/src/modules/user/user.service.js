@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Model } from 'sequelize';
 import { USER_ROLE } from '../../core/constants/user-role';
 import { ApiHelper } from '../../core/helpers/api.helper';
-import { Appointment } from '../appointment/appointment.model';
+import { Clinic } from '../clinic/clinic.model';
 import { Specialty } from '../specialty/specialty.model';
 import { User } from './user.model';
 
@@ -29,7 +29,19 @@ async function getUserByPhoneNumber(phoneNumber) {
  */
 async function getUserById(id) {
   return User.findByPk(id, {
-    include: [Specialty]
+    attributes: {
+      exclude: ['clinicId', 'specialtyId']
+    },
+    include: [
+      Specialty,
+      {
+        model: Clinic,
+        as: 'clinic',
+        attributes: {
+          exclude: 'doctorId'
+        }
+      }
+    ]
   });
 }
 
@@ -58,6 +70,19 @@ async function getDoctorsWithPaging(pagination) {
     where: {
       role: USER_ROLE.DOCTOR
     },
+    attributes: {
+      exclude: ['clinicId', 'specialtyId']
+    },
+    include: [
+      Specialty,
+      {
+        model: Clinic,
+        as: 'clinic',
+        attributes: {
+          exclude: 'doctorId'
+        }
+      }
+    ],
     limit: pagination.limit,
     offset: ApiHelper.getPaginationOffset(pagination)
   });

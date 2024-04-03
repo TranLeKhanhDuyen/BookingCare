@@ -1,0 +1,54 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        firstName:
+          type: string
+          example: Alex
+        lastName:
+          type: string
+          example: Nguyen
+        email:
+          type: string
+          example: axnguyen.it@gmail.com
+        title:
+          type: string
+          nullable: true
+          example: Family Medicine
+        address:
+          type: string
+          example: Da Nang
+        phoneNumber:
+          type: string
+          example: 0337965479
+        dob:
+          type: date-time
+          example: 2001-12-18T16:48:37.000Z
+        role:
+          type: string
+          example: DOCTOR
+        gender:
+          type: string
+          example: MALE
+        avatar:
+          type: string
+          nullable: true
+          example: http://127.0.0.1/images/avatar.png
+        specialtyId:
+          type: string
+          nullable: true
+          example: 4
+        clinicId:
+          type: string
+          nullable: true
+          example: 4
+        createdAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z
+        updatedAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z

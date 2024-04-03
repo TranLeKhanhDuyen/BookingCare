@@ -1,0 +1,84 @@
+/doctors:
+  get:
+    tags:
+      - Doctor
+    summary: Get doctor list
+    description: Get doctor list
+    parameters:
+      - name: page
+        in: path
+        description: page
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: path
+        description: limit
+        required: false
+        schema:
+          type: integer
+    responses:
+      200:
+        description: successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/User'
+                pagination:
+                  type: string
+
+/doctors/appointments:
+  get:
+    tags:
+      - Doctor
+    summary: Get doctor list
+    description: Get doctor list
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignUpDto'
+    responses:
+      200:
+        description: successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+                accessToken:
+                  type: string
+      400:
+        description: Invalid request, Email already exists
+      404:
+        description: Specialty not found
+
+/doctors/{id}:
+  get:
+    tags:
+      - Doctor
+    summary: Get doctor details
+    description: Get doctor details
+    parameters:
+      - name: id
+        in: path
+        description: Doctor ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      404:
+        description: Doctor not found

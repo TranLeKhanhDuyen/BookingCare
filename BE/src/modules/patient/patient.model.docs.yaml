@@ -1,0 +1,25 @@
+components:
+  schemas:
+    Patient:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        fullName:
+          type: string
+          example: Alex Nguyen
+        email:
+          type: string
+          nullable: true
+        phoneNumber:
+          type: string
+          example: 0337965469
+        dob:
+          type: date-time
+        createdAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z
+        updatedAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z

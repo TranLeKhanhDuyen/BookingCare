@@ -1,0 +1,64 @@
+/specialties:
+  post:
+    tags:
+      - Specialty
+    summary: Get Specialty list
+    description: Get Specialty list
+    responses:
+      200:
+        description: Successfully
+  get:
+    tags:
+      - Specialty
+    summary: Get Specialty list
+    description: Get Specialty list
+    responses:
+      200:
+        description: Successfully
+
+/specialties/{id}:
+  get:
+    tags:
+      - Specialty
+    summary: Get Specialty details
+    description: Get Specialty details
+    parameters:
+      - name: id
+        in: path
+        description: Specialty ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+  put:
+    tags:
+      - Specialty
+    summary: Update Specialty
+    description: Update Specialty
+    parameters:
+      - name: id
+        in: path
+        description: Specialty ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+  delete:
+    tags:
+      - Specialty
+    summary: Delete Specialty
+    description: Delete Specialty
+    parameters:
+      - name: id
+        in: path
+        description: Specialty ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully

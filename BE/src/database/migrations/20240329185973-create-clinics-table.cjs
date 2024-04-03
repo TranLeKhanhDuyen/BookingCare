@@ -44,6 +44,10 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      fee: {
+        type: Sequelize.DECIMAL,
+        allowNull: false
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false

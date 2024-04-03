@@ -1,0 +1,69 @@
+/clinics:
+  post:
+    tags:
+      - Clinic
+    summary: Create Clinic list
+    description: Create Clinic list
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CreateClinicDto'
+    responses:
+      200:
+        description: Successfully
+  get:
+    tags:
+      - Clinic
+    summary: Get Clinic list
+    description: Get Clinic list
+    responses:
+      200:
+        description: Successfully
+
+/clinics/{id}:
+  get:
+    tags:
+      - Clinic
+    summary: Get Clinic details
+    description: Get Clinic details
+    parameters:
+      - name: id
+        in: path
+        description: Clinic ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+  put:
+    tags:
+      - Clinic
+    summary: Update Clinic
+    description: Update Clinic
+    parameters:
+      - name: id
+        in: path
+        description: Clinic ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+  delete:
+    tags:
+      - Clinic
+    summary: Delete Clinic
+    description: Delete Clinic
+    parameters:
+      - name: id
+        in: path
+        description: Clinic ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully

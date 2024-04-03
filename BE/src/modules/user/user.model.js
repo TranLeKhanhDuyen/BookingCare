@@ -56,6 +56,17 @@ export const User = db.define('users', {
       model: Specialty,
       key: 'id'
     }
+  },
+  clinicId: {
+    type: DataTypes.BIGINT,
+    unique: true,
+    references: {
+      model: 'clinics',
+      key: 'id'
+    }
+  },
+  description: {
+    type: DataTypes.TEXT
   }
 });
 

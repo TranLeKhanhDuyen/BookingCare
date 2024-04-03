@@ -39,6 +39,10 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      reasonForMedicalExam: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false
