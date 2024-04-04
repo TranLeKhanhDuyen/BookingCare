@@ -1,3 +1,4 @@
+import { Sequelize, Op } from 'sequelize';
 import { ApiHelper } from '../../core/helpers/api.helper';
 import { Patient } from '../patient/patient.model';
 import { Appointment } from './appointment.model';
@@ -9,12 +10,14 @@ async function createAppointment(data) {
   const patient = await Patient.create({
     fullName: data.fullName,
     email: data.email,
-    phoneNumber: data.phoneNumber
+    phoneNumber: data.phoneNumber,
+    dob: data.dob
   });
   return Appointment.create({
     doctorId: data.doctorId,
     patientId: patient.id,
-    date: data.date
+    date: data.date,
+    reasonForMedicalExam: data.reasonForMedicalExam
   });
 }
 
@@ -44,6 +47,31 @@ async function getAppointmentsByDoctorWithPaging(doctorId, status, pagination) {
 }
 
 /**
+ * @param {number} doctorId
+ * @param {object} pagination
+ */
+async function getAppointmentsScheduleByDoctorWithPaging(
+  doctorId,
+  status,
+  pagination
+) {
+  const where = {
+    doctorId,
+    date: {
+      [Op.gt]: new Date().toISOString()
+    }
+  };
+  if (status) where.status = status;
+
+  return Appointment.findAndCountAll({
+    where,
+    include: [Patient],
+    limit: pagination.limit,
+    offset: ApiHelper.getPaginationOffset(pagination)
+  });
+}
+
+/**
  * @param {number} patientId
  * @param {object} data
  */
@@ -64,5 +92,6 @@ export const appointmentService = {
   createAppointment,
   updateAppointment,
   appointmentByPatientId,
-  getAppointmentsByDoctorWithPaging
+  getAppointmentsByDoctorWithPaging,
+  getAppointmentsScheduleByDoctorWithPaging
 };

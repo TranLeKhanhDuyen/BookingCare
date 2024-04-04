@@ -1,0 +1,24 @@
+components:
+  schemas:
+    Specialty:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 4
+        name:
+          type: string
+          example: Family Medicine
+        description:
+          type: string
+          nullable: true
+        image:
+          type: string
+          nullable: true
+          example: http://127.0.0.1/images/specialty.png
+        createdAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z
+        updatedAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z

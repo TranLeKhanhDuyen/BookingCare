@@ -58,7 +58,7 @@ async function signUp(req, res, next) {
   const hashedPassword = await BcryptHelper.hash(password);
   const user = await userService.createUser({
     ...req.body,
-    role: USER_ROLE.USER,
+    role: USER_ROLE.DOCTOR,
     password: hashedPassword
   });
 

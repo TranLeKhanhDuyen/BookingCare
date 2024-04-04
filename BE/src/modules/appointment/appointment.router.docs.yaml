@@ -1,0 +1,56 @@
+/appointments:
+  post:
+    tags:
+      - Appointment
+    summary: Create Appointment
+    description: Create Appointment
+    parameters:
+      - name: page
+        in: path
+        description: page
+        required: false
+        schema:
+          type: integer
+      - name: limit
+        in: path
+        description: limit
+        required: false
+        schema:
+          type: integer
+    responses:
+      200:
+        description: successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Appointment'
+                pagination:
+                  type: string
+
+/appointments/{patientId}:
+  put:
+    tags:
+      - Appointment
+    summary: Get doctor details
+    description: Get doctor details
+    parameters:
+      - name: patientId
+        in: path
+        description: Patient ID
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      404:
+        description: Doctor not found

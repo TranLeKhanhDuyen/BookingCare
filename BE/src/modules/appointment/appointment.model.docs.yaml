@@ -1,0 +1,37 @@
+components:
+  schemas:
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        doctorId:
+          type: integer
+          example: 1
+        patientId:
+          type: integer
+          example: 1
+        status:
+          type: string
+          example: PENDING
+        date:
+          type: date-time
+          example: 2024-12-04T15:00:00.000Z
+        diagnosis:
+          type: string
+          nullable: true
+        prescription:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        reasonForMedicalExam:
+          type: string
+        createdAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z
+        updatedAt:
+          type: date-time
+          example: 2024-04-01T15:00:00.000Z

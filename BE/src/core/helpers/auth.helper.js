@@ -83,4 +83,16 @@ export class AuthHelper {
 
     return next(new ForbiddenException());
   }
+
+
+  /**
+   * @param {express.Request} req
+   * @param {express.Response} res
+   * @param {express.NextFunction} next
+   */
+  static adminMiddleware(req, res, next) {
+    if ([USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN].includes(req.user.role)) return next();
+
+    return next(new ForbiddenException());
+  }
 }

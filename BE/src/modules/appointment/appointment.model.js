@@ -39,5 +39,9 @@ export const Appointment = db.define('appointments', {
   },
   description: {
     type: DataTypes.TEXT
+  },
+  reasonForMedicalExam: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 });

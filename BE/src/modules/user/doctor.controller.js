@@ -31,7 +31,7 @@ async function getDoctorDetails(req, res) {
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getDoctorAppointments(req, res) {
+async function getMyAppointments(req, res) {
   const pagination = ApiHelper.parsePaging(req.query);
   const data = await appointmentService.getAppointmentsByDoctorWithPaging(
     req.user.id,
@@ -45,8 +45,47 @@ async function getDoctorAppointments(req, res) {
   });
 }
 
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+async function getDoctorAppointments(req, res) {
+  const pagination = ApiHelper.parsePaging(req.query);
+  const data = await appointmentService.getAppointmentsByDoctorWithPaging(
+    parseInt(req.params.doctorId),
+    req.query.status,
+    pagination
+  );
+
+  res.status(StatusCodes.OK).json({
+    items: data.rows,
+    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+  });
+}
+
+/**
+ * @param {express.Request} req
+ * @param {express.Response} res
+ */
+async function getMyAppointmentsSchedule(req, res) {
+  const pagination = ApiHelper.parsePaging(req.query);
+  const data =
+    await appointmentService.getAppointmentsScheduleByDoctorWithPaging(
+      req.user.id,
+      req.query.status,
+      pagination
+    );
+
+  res.status(StatusCodes.OK).json({
+    items: data.rows,
+    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+  });
+}
+
 export const doctorController = {
   getDoctors,
   getDoctorDetails,
-  getDoctorAppointments
+  getMyAppointments,
+  getDoctorAppointments,
+  getMyAppointmentsSchedule
 };

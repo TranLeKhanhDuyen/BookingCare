@@ -12,5 +12,9 @@ export const Patient = db.define('patients', {
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  dob: {
+    type: DataTypes.DATE,
+    allowNull: false
   }
 });
