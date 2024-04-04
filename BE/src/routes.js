@@ -15,4 +15,5 @@ routes.use('/users', userRouter);
 routes.use('/doctors', doctorRouter);
 routes.use('/clinics', clinicRouter);
 routes.use('/patients', patientRouter);
+
 routes.use('/appointments', appointmentRouter);
