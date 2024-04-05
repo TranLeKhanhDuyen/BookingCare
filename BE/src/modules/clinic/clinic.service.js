@@ -6,7 +6,7 @@ import { User } from '../user/user.model';
  * @param {number} id
  * @returns {Promise<Model<Clinic> | undefined>}
  */
-async function getClinicById(id) {
+const getClinicById = (id) => {
   return Clinic.findByPk(id, {
     attributes: {
       exclude: 'doctorId'
@@ -19,6 +19,6 @@ async function getClinicById(id) {
       }
     }
   });
-}
+};
 
 export const clinicService = { getClinicById };

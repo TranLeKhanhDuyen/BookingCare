@@ -8,7 +8,7 @@ import { appointmentService } from '../appointment/appointment.service';
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getDoctors(req, res) {
+const getDoctors = async (req, res) => {
   const pagination = ApiHelper.parsePaging(req.query);
   const data = await userService.getDoctorsWithPaging(pagination);
 
@@ -16,22 +16,22 @@ async function getDoctors(req, res) {
     items: data.rows,
     pagination: ApiHelper.setPaginationTotal(pagination, data.count)
   });
-}
+};
 
 /**
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getDoctorDetails(req, res) {
+const getDoctorDetails = async (req, res) => {
   const doctorDetails = await userService.getUserById(req.params.id);
   res.status(StatusCodes.OK).json(doctorDetails);
-}
+};
 
 /**
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getMyAppointments(req, res) {
+const getMyAppointments = async (req, res) => {
   const pagination = ApiHelper.parsePaging(req.query);
   const data = await appointmentService.getAppointmentsByDoctorWithPaging(
     req.user.id,
@@ -43,13 +43,13 @@ async function getMyAppointments(req, res) {
     items: data.rows,
     pagination: ApiHelper.setPaginationTotal(pagination, data.count)
   });
-}
+};
 
 /**
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getDoctorAppointments(req, res) {
+const getDoctorAppointments = async (req, res) => {
   const pagination = ApiHelper.parsePaging(req.query);
   const data = await appointmentService.getAppointmentsByDoctorWithPaging(
     parseInt(req.params.doctorId),
@@ -61,13 +61,13 @@ async function getDoctorAppointments(req, res) {
     items: data.rows,
     pagination: ApiHelper.setPaginationTotal(pagination, data.count)
   });
-}
+};
 
 /**
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getMyAppointmentsSchedule(req, res) {
+const getMyAppointmentsSchedule = async (req, res) => {
   const pagination = ApiHelper.parsePaging(req.query);
   const data =
     await appointmentService.getAppointmentsScheduleByDoctorWithPaging(
@@ -80,7 +80,7 @@ async function getMyAppointmentsSchedule(req, res) {
     items: data.rows,
     pagination: ApiHelper.setPaginationTotal(pagination, data.count)
   });
-}
+};
 
 export const doctorController = {
   getDoctors,
