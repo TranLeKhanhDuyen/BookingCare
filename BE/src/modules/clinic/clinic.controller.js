@@ -6,9 +6,9 @@ import { StatusCodes } from 'http-status-codes';
  * @param {express.Request} req
  * @param {express.Response} res
  */
-async function getClinicDetails(req, res) {
+const getClinicDetails = async (req, res) => {
   const clinicDetails = await clinicService.getClinicById(req.params.id);
   res.status(StatusCodes.OK).json(clinicDetails);
-}
+};
 
 export const clinicController = { getClinicDetails };

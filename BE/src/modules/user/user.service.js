@@ -11,23 +11,23 @@ import { User } from './user.model';
  * @param {string} email
  * @returns {Promise<Model<User> | undefined>}
  */
-async function getUserByEmail(email) {
+const getUserByEmail = async (email) => {
   return User.findOne({ where: { email } });
-}
+};
 
 /**
  * @param {string} phoneNumber
  * @returns {Promise<Model<User> | undefined>}
  */
-async function getUserByPhoneNumber(phoneNumber) {
+const getUserByPhoneNumber = (phoneNumber) => {
   return User.findOne({ where: { phoneNumber } });
-}
+};
 
 /**
  * @param {number} id
  * @returns {Promise<Model<User> | undefined>}
  */
-async function getUserById(id) {
+const getUserById = (id) => {
   return User.findByPk(id, {
     attributes: {
       exclude: ['clinicId', 'specialtyId']
@@ -43,29 +43,29 @@ async function getUserById(id) {
       }
     ]
   });
-}
+};
 
 /**
  * @param {express.Request} req
  * @param {express.Response} res
  * @param {express.NextFunction} next
  */
-async function getProfile(req, res, next) {
+const getProfile = async (req, res, next) => {
   const model = await getUserById(req.user.id);
   res.status(StatusCodes.OK).json(model);
-}
+};
 
 /**
  * @param {object} data
  */
-async function createUser(data) {
+const createUser = (data) => {
   return User.create(data);
-}
+};
 
 /**
  * @param {object} pagination
  */
-async function getDoctorsWithPaging(pagination) {
+const getDoctorsWithPaging = (pagination) => {
   return User.findAndCountAll({
     where: {
       role: USER_ROLE.DOCTOR
@@ -86,7 +86,7 @@ async function getDoctorsWithPaging(pagination) {
     limit: pagination.limit,
     offset: ApiHelper.getPaginationOffset(pagination)
   });
-}
+};
 
 export const userService = {
   getUserByEmail,

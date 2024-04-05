@@ -13,7 +13,7 @@ import { userService } from '../user/user.service';
  * @param {express.Response} res
  * @param {express.NextFunction} next
  */
-async function signIn(req, res, next) {
+const signIn = async (req, res, next) => {
   const { email, password } = req.body;
   const user = await userService.getUserByEmail(email);
 
@@ -34,14 +34,14 @@ async function signIn(req, res, next) {
   }
 
   res.status(StatusCodes.OK).json(await signAuthResponse(user));
-}
+};
 
 /**
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
  */
-async function signUp(req, res, next) {
+const signUp = async (req, res, next) => {
   const { email, password } = req.body;
   const existedUser = await userService.getUserByEmail(email);
 
@@ -63,14 +63,14 @@ async function signUp(req, res, next) {
   });
 
   res.status(StatusCodes.OK).json(await signAuthResponse(user));
-}
+};
 
-async function signAuthResponse(user) {
+const signAuthResponse = (user) => {
   return {
     user: user,
     accessToken: JwtHelper.sign({ id: user.id })
   };
-}
+};
 
 export const authService = {
   signIn,
