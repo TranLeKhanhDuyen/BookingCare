@@ -8,7 +8,7 @@ import { ApiHelper } from '../../core/helpers/api.helper';
  * @param {express.Response} res
  * @param {express.NextFunction} next
  */
-async function getSpecialties(req, res, next) {
+const getSpecialties = async (req, res, next) => {
   const pagination = ApiHelper.parsePaging(req.query);
   const data = await specialtyService.getListWithPaging(pagination);
 

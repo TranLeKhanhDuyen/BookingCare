@@ -28,14 +28,8 @@ export const Clinic = db.define('clinics', {
     type: DataTypes.TIME,
     allowNull: false
   },
-  doctorId: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-    primaryKey: true,
-    references: {
-      model: User,
-      key: 'id'
-    },
-    onDelete: 'CASCADE'
+  fee: {
+    type: DataTypes.DECIMAL,
+    allowNull: false
   }
 });

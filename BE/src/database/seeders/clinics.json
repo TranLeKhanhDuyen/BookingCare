@@ -1,0 +1,102 @@
+[
+  {
+    "name": "Christa Stallibrass",
+    "address": "006 Summerview Crossing",
+    "openingTime": "7:26:15",
+    "closingTime": "21:33:03",
+    "doctorId": 9,
+    "createdAt": "2023-11-09 21:18:53",
+    "updatedAt": "2024-02-06 01:13:21",
+    "fee": 535488.21
+  },
+  {
+    "name": "Raynor Bucke",
+    "address": "4 Towne Pass",
+    "openingTime": "10:30:33",
+    "closingTime": "22:23:25",
+    "doctorId": 5,
+    "createdAt": "2023-11-12 12:10:52",
+    "updatedAt": "2023-09-11 04:29:50",
+    "fee": 578720.93
+  },
+  {
+    "name": "Lizzie Swinford",
+    "address": "470 Division Parkway",
+    "openingTime": "10:05:37",
+    "closingTime": "22:09:52",
+    "doctorId": 11,
+    "createdAt": "2023-10-19 14:21:18",
+    "updatedAt": "2023-08-12 14:05:46",
+    "fee": 649028.22
+  },
+  {
+    "name": "Dacey Guise",
+    "address": "9706 Sutteridge Terrace",
+    "openingTime": "9:51:29",
+    "closingTime": "21:11:56",
+    "doctorId": 6,
+    "createdAt": "2023-09-22 12:52:11",
+    "updatedAt": "2023-08-24 02:37:21",
+    "fee": 289703.3
+  },
+  {
+    "name": "Sibelle Danne",
+    "address": "66842 Darwin Pass",
+    "openingTime": "7:10:00",
+    "closingTime": "22:07:18",
+    "doctorId": 3,
+    "createdAt": "2023-09-24 03:28:46",
+    "updatedAt": "2023-11-26 20:26:58",
+    "fee": 682795.93
+  },
+  {
+    "name": "Korry Bearward",
+    "address": "396 Main Point",
+    "openingTime": "10:03:34",
+    "closingTime": "22:55:05",
+    "doctorId": 11,
+    "createdAt": "2023-10-21 16:14:27",
+    "updatedAt": "2023-10-23 17:07:11",
+    "fee": 459718.35
+  },
+  {
+    "name": "Kirbee Busse",
+    "address": "8069 Iowa Street",
+    "openingTime": "8:32:38",
+    "closingTime": "21:26:29",
+    "doctorId": 10,
+    "createdAt": "2023-12-28 10:38:13",
+    "updatedAt": "2024-03-29 22:16:06",
+    "fee": 333980.18
+  },
+  {
+    "name": "Dewey Gregorio",
+    "address": "20 Westend Alley",
+    "openingTime": "10:20:42",
+    "closingTime": "22:07:59",
+    "doctorId": 5,
+    "createdAt": "2023-05-12 15:50:59",
+    "updatedAt": "2023-04-10 20:40:54",
+    "fee": 218761.99
+  },
+  {
+    "name": "Christopher Wedge",
+    "address": "1511 Hallows Terrace",
+    "openingTime": "8:56:41",
+    "closingTime": "22:19:06",
+    "doctorId": 6,
+    "createdAt": "2024-02-07 13:40:24",
+    "updatedAt": "2024-02-23 07:26:06",
+    "fee": 202120.17
+  },
+  {
+    "name": "Neysa Pyrton",
+    "address": "26 Springview Lane",
+    "openingTime": "8:19:16",
+    "closingTime": "21:35:29",
+    "doctorId": 6,
+    "createdAt": "2023-05-15 09:05:14",
+    "updatedAt": "2023-08-10 00:24:36",
+    "fee": 203945.03
+  }
+]

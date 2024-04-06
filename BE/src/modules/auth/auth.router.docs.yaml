@@ -1,0 +1,55 @@
+/auth/sign-up:
+  post:
+    tags:
+      - Auth
+    summary: Sign up to system
+    description: Sign up to system
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignUpDto'
+    responses:
+      200:
+        description: successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+                accessToken:
+                  type: string
+      400:
+        description: Invalid request, Email already exists
+      404:
+        description: Specialty not found
+
+/auth/sign-in:
+  post:
+    tags:
+      - Auth
+    summary: Sign in with your credentials
+    description: Sign in with your credentials
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignInDto'
+    responses:
+      200:
+        description: successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+                accessToken:
+                  type: string
+      400:
+        description: Invalid request
+      404:
+        description: User not found
