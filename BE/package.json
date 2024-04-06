@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec babel-node --experimental-specifier-resolution=node src/server.js",
+    "dev": "nodemon --experimental-specifier-resolution=node src/server.js",
     "start": "node --experimental-specifier-resolution=node src/server.js"
   },
   "author": "",
@@ -22,7 +22,9 @@
     "joi": "^17.12.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.2",
-    "sequelize": "^6.37.1"
+    "sequelize": "^6.37.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -35,5 +37,16 @@
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "sequelize-cli": "^6.6.2"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "js, yaml",
+    "ignore": [
+      "src/public",
+      "dist",
+      "node_modules"
+    ]
   }
 }

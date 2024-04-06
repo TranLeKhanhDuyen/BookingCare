@@ -61,6 +61,12 @@ module.exports = {
           key: 'id'
         }
       },
+      clinicId: {
+        type: Sequelize.BIGINT,
+      },
+      description: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false

@@ -1,0 +1,15 @@
+/users/me:
+  get:
+    tags:
+      - User
+    summary: Get User Profile
+    description: Get User Profile
+    responses:
+      200:
+        description: Successfully
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      401:
+        description: Unauthorize

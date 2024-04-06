@@ -1,4 +1,5 @@
 import { Appointment } from './appointment/appointment.model';
+import { Clinic } from './clinic/clinic.model';
 import { Patient } from './patient/patient.model';
 import { Specialty } from './specialty/specialty.model';
 import { User } from './user/user.model';
@@ -17,3 +18,14 @@ Appointment.belongsTo(User, { foreignKey: 'doctorId', as: 'doctor' });
 Appointment.belongsTo(Patient, { foreignKey: 'patientId' });
 
 // ════════════════════════════════════════════
+
+User.hasOne(Clinic, {
+  foreignKey: 'doctorId',
+  as: 'clinic',
+  onDelete: 'CASCADE'
+});
+
+Clinic.belongsTo(User, {
+  foreignKey: 'doctorId',
+  as: 'user'
+});

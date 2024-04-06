@@ -9,8 +9,20 @@ doctorRouter.get(
   '/appointments',
   AuthHelper.authMiddleware,
   AuthHelper.doctorMiddleware,
-  doctorController.getDoctorAppointments
+  doctorController.getMyAppointments
+);
+doctorRouter.get(
+  '/appointments/schedule',
+  AuthHelper.authMiddleware,
+  AuthHelper.doctorMiddleware,
+  doctorController.getMyAppointmentsSchedule
 );
 doctorRouter.get('/:id', doctorController.getDoctorDetails);
+doctorRouter.get(
+  '/:doctorId/appointments',
+  AuthHelper.authMiddleware,
+  AuthHelper.adminMiddleware,
+  doctorController.getDoctorAppointments
+);
 
 export default doctorRouter;

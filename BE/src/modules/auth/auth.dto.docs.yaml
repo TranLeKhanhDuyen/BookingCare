@@ -1,0 +1,52 @@
+components:
+  schemas:
+    SignUpDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Alex
+          required: true
+        lastName:
+          type: string
+          example: Nguyen
+          required: true
+        email:
+          type: string
+          example: axnguyen.it@gmail.com
+          required: true
+        password:
+          type: string
+          required: true
+        address:
+          type: string
+          example: Da Nang
+          required: true
+        phoneNumber:
+          type: string
+          example: 0337965479
+          required: true
+        dob:
+          type: string
+          required: date-time
+        gender:
+          type: string
+          example: MALE
+          required: true
+        specialtyId:
+          type: integer
+          example: 1
+          required: false
+        avatar:
+          type: string
+          required: false
+    SignInDto:
+      properties:
+        email:
+          type: string
+          example: bookingcare@gmail.com
+          required: true
+        password:
+          type: string
+          example: password
+          required: true
