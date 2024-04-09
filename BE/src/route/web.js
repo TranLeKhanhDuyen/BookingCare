@@ -4,7 +4,7 @@ import userController from '../controller/userController';
 
 const router = express.Router();
 
-const initWebRouters = (app) => {
+export const initWebRouters = (app) => {
   router.get('/', homeController.getHomePage);
   router.get('/crud', homeController.getCRUD);
   router.post('/post-crud', homeController.postCRUD);

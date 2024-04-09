@@ -2,69 +2,30 @@ import bodyParser from 'body-parser'; //Get the correct id sent by the user
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
-import { API_PREFIX, PORT } from './core/config/env-config';
+import helmet from 'helmet';
 import { ExceptionHandler } from './core/handlers/exception.handler';
 import { connectDatabase } from './database/data-source';
 import './modules/relationship';
 import { routes } from './routes';
-
-import swaggerJSDoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
-
 const app = express();
-app.use(cors({ origin: true, credentials: false }));
+const corsOptions = {
+  origin: '*' //(https://your-client-app.com)
+};
 
+app.use(cors(corsOptions));
+app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect database
 connectDatabase();
 
-/**@type {swaggerJSDoc.Options} */
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'Booking Care API',
-      description: 'Booking Care API Documentation',
-      version: '1.0.0'
-    },
-    host: `http://127.0.0.1:${PORT}${API_PREFIX}`,
-    produces: ['application/json'],
-    components: {
-      securitySchemes: {
-        bearer: {
-          type: 'http',
-          scheme: 'bearer',
-          in: 'header',
-          bearerFormat: 'JWT'
-        }
-      }
-    }
-    // servers: [
-    //   {
-    //     url: `http://127.0.0.1:${PORT}${API_PREFIX}`
-    //   }
-    // ]
-  },
-  apis: [
-    // './**/*/*.router.js',
-    // './**/*/*.model.js',
-    // './**/*/*.validator.js',
-    './**/*.docs.yaml'
-  ]
-};
-
-const specs = swaggerJSDoc(options);
-
-app.use(API_PREFIX, routes);
-app.use('/v1/docs', swaggerUi.serve, swaggerUi.setup(specs));
+app.use('/api/v1', routes);
 ExceptionHandler.notFoundHandler(app);
 app.use(ExceptionHandler.errorHandler);
 
-
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(9000, () => {
+  console.log(`Server is running at http://localhost:${9000}`);
 });
 
 export default app;

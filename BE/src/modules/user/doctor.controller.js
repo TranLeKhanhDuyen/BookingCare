@@ -1,8 +1,8 @@
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ApiHelper } from '../../core/helpers/api.helper';
-import { userService } from './user.service';
 import { appointmentService } from '../appointment/appointment.service';
+import { userService } from './user.service';
 
 /**
  * @param {express.Request} req

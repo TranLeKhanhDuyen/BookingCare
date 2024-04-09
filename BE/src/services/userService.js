@@ -1,6 +1,5 @@
-import { where } from 'sequelize';
-import db from '../database/models/index';
 import bcrypt from 'bcryptjs';
+import db from '../database/models/index';
 
 const salt = bcrypt.genSaltSync(10);
 
