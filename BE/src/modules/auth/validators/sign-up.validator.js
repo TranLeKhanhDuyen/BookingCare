@@ -11,5 +11,6 @@ export const signUpValidator = ValidatorHelper.create({
   dob: Joi.date().iso().required(),
   gender: Joi.string().required(),
   specialtyId: Joi.number().optional(),
-  avatar: Joi.any().meta({}).optional()
+  avatar: Joi.any().meta({}).optional(),
+  role: Joi.string().optional()
 });

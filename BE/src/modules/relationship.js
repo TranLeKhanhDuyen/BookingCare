@@ -9,13 +9,16 @@ import { User } from './user/user.model';
 Specialty.hasMany(User);
 User.belongsTo(Specialty);
 
+// User.hasMany(Appointment, { foreignKey: 'doctorId' });
+// Patient.hasMany(Appointment, { foreignKey: 'patientId' });
+
 // ════════════════════════════════════════════
 
 User.belongsToMany(Patient, { through: Appointment, foreignKey: 'doctorId' });
 Patient.belongsToMany(User, { through: Appointment, foreignKey: 'patientId' });
 
 Appointment.belongsTo(User, { foreignKey: 'doctorId', as: 'doctor' });
-Appointment.belongsTo(Patient, { foreignKey: 'patientId' });
+Appointment.belongsTo(Patient, { foreignKey: 'patientId', as: 'patient' });
 
 // ════════════════════════════════════════════
 

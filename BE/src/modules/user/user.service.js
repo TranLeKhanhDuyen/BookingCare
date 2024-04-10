@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Model } from 'sequelize';
 import { USER_ROLE } from '../../core/constants/user-role';
 import { ApiHelper } from '../../core/helpers/api.helper';
+import { BcryptHelper } from '../../core/helpers/bcrypt.helper';
 import { Clinic } from '../clinic/clinic.model';
 import { Specialty } from '../specialty/specialty.model';
 import { User } from './user.model';
@@ -58,8 +59,10 @@ const getProfile = async (req, res, next) => {
 /**
  * @param {object} data
  */
-const createUser = (data) => {
-  return User.create(data);
+const createUser = async (data) => {
+  const hashedPassword = await BcryptHelper.hash(data.password);
+
+  return User.create({ ...data, password: hashedPassword });
 };
 
 /**

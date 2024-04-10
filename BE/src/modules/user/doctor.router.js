@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { doctorController } from './doctor.controller';
 import { AuthHelper } from '../../core/helpers/auth.helper';
+import { doctorController } from './doctor.controller';
 
 const doctorRouter = Router();
 

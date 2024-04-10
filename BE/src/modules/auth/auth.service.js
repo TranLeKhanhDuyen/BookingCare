@@ -1,7 +1,6 @@
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ERROR_CODE } from '../../core/constants/error-code';
-import { USER_ROLE } from '../../core/constants/user-role';
 import { BadRequestException } from '../../core/exceptions/bad-request.exception';
 import { NotFoundException } from '../../core/exceptions/not-found.exception';
 import { BcryptHelper } from '../../core/helpers/bcrypt.helper';
@@ -58,7 +57,7 @@ const signUp = async (req, res, next) => {
   const hashedPassword = await BcryptHelper.hash(password);
   const user = await userService.createUser({
     ...req.body,
-    role: USER_ROLE.DOCTOR,
+    // role: USER_ROLE.DOCTOR,
     password: hashedPassword
   });
 
