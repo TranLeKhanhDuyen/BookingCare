@@ -28,22 +28,8 @@ const getUserByPhoneNumber = (phoneNumber) => {
  * @param {number} id
  * @returns {Promise<Model<User> | undefined>}
  */
-const getUserById = (id) => {
-  return User.findByPk(id, {
-    attributes: {
-      exclude: ['clinicId', 'specialtyId']
-    },
-    include: [
-      Specialty,
-      {
-        model: Clinic,
-        as: 'clinic',
-        attributes: {
-          exclude: 'doctorId'
-        }
-      }
-    ]
-  });
+const getUserById = async (id) => {
+  return User.findByPk(id);
 };
 
 /**
@@ -52,43 +38,75 @@ const getUserById = (id) => {
  * @param {express.NextFunction} next
  */
 const getProfile = async (req, res, next) => {
-  const model = await getUserById(req.user.id);
-  res.status(StatusCodes.OK).json(model);
+  try {
+    const model = await getUserById(req.user.id);
+    res.status(StatusCodes.OK).json(model);
+  } catch (error) {
+    next(error);
+  }
 };
 
 /**
  * @param {object} data
  */
 const createUser = async (data) => {
-  const hashedPassword = await BcryptHelper.hash(data.password);
+  try {
+    const hashedPassword = await BcryptHelper.hash(data.password);
 
-  return User.create({ ...data, password: hashedPassword });
+    return User.create({ ...data, password: hashedPassword });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/// delete user by id
+const deleteUserById = async (id) => {
+  try {
+    await User.destroy({ where: { id } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/// update user by id
+const updateUserById = async (id, data) => {
+  try {
+    await User.update(data, { where: { id } });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 /**
  * @param {object} pagination
  */
 const getDoctorsWithPaging = (pagination) => {
-  return User.findAndCountAll({
-    where: {
-      role: USER_ROLE.DOCTOR
-    },
-    attributes: {
-      exclude: ['clinicId', 'specialtyId']
-    },
-    include: [
-      Specialty,
-      {
-        model: Clinic,
-        as: 'clinic',
-        attributes: {
-          exclude: 'doctorId'
-        }
-      }
-    ],
-    limit: pagination.limit,
-    offset: ApiHelper.getPaginationOffset(pagination)
-  });
+  try {
+    return User.findAndCountAll({
+      where: {
+        role: [USER_ROLE.DOCTOR]
+      },
+      limit: pagination.limit,
+      offset: ApiHelper.getPaginationOffset(pagination)
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// get all users
+const getAllUsers = (pagination) => {
+  try {
+    return User.findAndCountAll({
+      where: {
+        role: [USER_ROLE.DOCTOR, USER_ROLE.USER]
+      },
+      limit: pagination.limit,
+      offset: ApiHelper.getPaginationOffset(pagination)
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const userService = {
@@ -97,5 +115,8 @@ export const userService = {
   getProfile,
   createUser,
   getUserByPhoneNumber,
-  getDoctorsWithPaging
+  getDoctorsWithPaging,
+  deleteUserById,
+  updateUserById,
+  getAllUsers
 };

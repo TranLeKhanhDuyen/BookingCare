@@ -41,34 +41,43 @@ const signIn = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const signUp = async (req, res, next) => {
-  const { email, password } = req.body;
-  const existedUser = await userService.getUserByEmail(email);
+  try {
+    const { email, password } = req.body;
+    const existedUser = await userService.getUserByEmail(email);
 
-  if (existedUser) {
-    return next(
-      new BadRequestException(
-        'User',
-        ERROR_CODE.EMAIL_ALREADY_EXISTS,
-        'Email already exists'
-      )
-    );
+    if (existedUser) {
+      return next(
+        new BadRequestException(
+          'User',
+          ERROR_CODE.EMAIL_ALREADY_EXISTS,
+          'Email already exists'
+        )
+      );
+    }
+
+    const hashedPassword = await BcryptHelper.hash(password);
+    const user = await userService.createUser({
+      ...req.body,
+      // role: USER_ROLE.DOCTOR,
+      password: hashedPassword
+    });
+
+    res.status(StatusCodes.OK).json(await signAuthResponse(user));
+  } catch (error) {
+    console.log(error);
+    return next(error);
   }
-
-  const hashedPassword = await BcryptHelper.hash(password);
-  const user = await userService.createUser({
-    ...req.body,
-    // role: USER_ROLE.DOCTOR,
-    password: hashedPassword
-  });
-
-  res.status(StatusCodes.OK).json(await signAuthResponse(user));
 };
 
 const signAuthResponse = (user) => {
-  return {
-    user: user,
-    accessToken: JwtHelper.sign({ id: user.id })
-  };
+  try {
+    return {
+      user: user,
+      accessToken: JwtHelper.sign({ id: user.id })
+    };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const authService = {

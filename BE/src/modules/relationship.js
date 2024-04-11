@@ -6,8 +6,8 @@ import { User } from './user/user.model';
 
 // ════════════════════════════════════════════
 
-Specialty.hasMany(User);
-User.belongsTo(Specialty);
+Specialty.hasMany(User, { as: 'User', foreignKey: 'specialtyId' });
+User.belongsTo(Specialty, { as: 'Specialty', foreignKey: 'specialtyId' });
 
 // User.hasMany(Appointment, { foreignKey: 'doctorId' });
 // Patient.hasMany(Appointment, { foreignKey: 'patientId' });

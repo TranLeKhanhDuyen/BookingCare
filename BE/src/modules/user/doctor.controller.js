@@ -9,13 +9,31 @@ import { userService } from './user.service';
  * @param {express.Response} res
  */
 const getDoctors = async (req, res) => {
-  const pagination = ApiHelper.parsePaging(req.query);
-  const data = await userService.getDoctorsWithPaging(pagination);
+  try {
+    const pagination = ApiHelper.parsePaging(req.query);
+    const data = await userService.getDoctorsWithPaging(pagination);
 
-  res.status(StatusCodes.OK).json({
-    items: data.rows,
-    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
-  });
+    res.status(StatusCodes.OK).json({
+      items: data.rows,
+      pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
+};
+
+const getAllUsers = async (req, res) => {
+  try {
+    const pagination = ApiHelper.parsePaging(req.query);
+    const data = await userService.getAllUsers(pagination);
+
+    res.status(StatusCodes.OK).json({
+      items: data.rows,
+      pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };
 
 /**
@@ -23,8 +41,12 @@ const getDoctors = async (req, res) => {
  * @param {express.Response} res
  */
 const getDoctorDetails = async (req, res) => {
-  const doctorDetails = await userService.getUserById(req.params.id);
-  res.status(StatusCodes.OK).json(doctorDetails);
+  try {
+    const doctorDetails = await userService.getUserById(req.params.id);
+    res.status(StatusCodes.OK).json(doctorDetails);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };
 
 /**
@@ -32,17 +54,21 @@ const getDoctorDetails = async (req, res) => {
  * @param {express.Response} res
  */
 const getMyAppointments = async (req, res) => {
-  const pagination = ApiHelper.parsePaging(req.query);
-  const data = await appointmentService.getAppointmentsByDoctorWithPaging(
-    req.user.id,
-    req.query.status,
-    pagination
-  );
+  try {
+    const pagination = ApiHelper.parsePaging(req.query);
+    const data = await appointmentService.getAppointmentsByDoctorWithPaging(
+      req.user.id,
+      req.query.status,
+      pagination
+    );
 
-  res.status(StatusCodes.OK).json({
-    items: data.rows,
-    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
-  });
+    res.status(StatusCodes.OK).json({
+      items: data.rows,
+      pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };
 
 /**
@@ -50,17 +76,21 @@ const getMyAppointments = async (req, res) => {
  * @param {express.Response} res
  */
 const getDoctorAppointments = async (req, res) => {
-  const pagination = ApiHelper.parsePaging(req.query);
-  const data = await appointmentService.getAppointmentsByDoctorWithPaging(
-    parseInt(req.params.doctorId),
-    req.query.status,
-    pagination
-  );
+  try {
+    const pagination = ApiHelper.parsePaging(req.query);
+    const data = await appointmentService.getAppointmentsByDoctorWithPaging(
+      parseInt(req.params.doctorId),
+      req.query.status,
+      pagination
+    );
 
-  res.status(StatusCodes.OK).json({
-    items: data.rows,
-    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
-  });
+    res.status(StatusCodes.OK).json({
+      items: data.rows,
+      pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };
 
 /**
@@ -68,18 +98,22 @@ const getDoctorAppointments = async (req, res) => {
  * @param {express.Response} res
  */
 const getMyAppointmentsSchedule = async (req, res) => {
-  const pagination = ApiHelper.parsePaging(req.query);
-  const data =
-    await appointmentService.getAppointmentsScheduleByDoctorWithPaging(
-      req.user.id,
-      req.query.status,
-      pagination
-    );
+  try {
+    const pagination = ApiHelper.parsePaging(req.query);
+    const data =
+      await appointmentService.getAppointmentsScheduleByDoctorWithPaging(
+        req.user.id,
+        req.query.status,
+        pagination
+      );
 
-  res.status(StatusCodes.OK).json({
-    items: data.rows,
-    pagination: ApiHelper.setPaginationTotal(pagination, data.count)
-  });
+    res.status(StatusCodes.OK).json({
+      items: data.rows,
+      pagination: ApiHelper.setPaginationTotal(pagination, data.count)
+    });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error);
+  }
 };
 
 export const doctorController = {
@@ -87,5 +121,6 @@ export const doctorController = {
   getDoctorDetails,
   getMyAppointments,
   getDoctorAppointments,
-  getMyAppointmentsSchedule
+  getMyAppointmentsSchedule,
+  getAllUsers
 };

@@ -5,6 +5,9 @@ import { doctorController } from './doctor.controller';
 const doctorRouter = Router();
 
 doctorRouter.get('/', doctorController.getDoctors);
+
+doctorRouter.get('/all', doctorController.getAllUsers);
+
 doctorRouter.get(
   '/appointments',
   AuthHelper.authMiddleware,

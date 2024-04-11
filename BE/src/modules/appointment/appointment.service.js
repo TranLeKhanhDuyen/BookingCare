@@ -36,14 +36,13 @@ const getAppointmentsByDoctorWithPaging = async (
   return Appointment.findAndCountAll({
     where,
     include: [
-      Patient
-      // {
-      //   model: User,
-      //   as: 'doctor',
-      //   attributes: {
-      //     exclude: ['password']
-      //   }
-      // }
+      {
+        model: Patient,
+        as: 'patient',
+        // where: {
+        //   id: doctorId
+        // }
+      }
     ],
     limit: pagination.limit,
     offset: ApiHelper.getPaginationOffset(pagination)

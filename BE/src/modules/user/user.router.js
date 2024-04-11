@@ -15,4 +15,16 @@ userRouter.get('/me', AuthHelper.authMiddleware, userService.getProfile);
 
 userRouter.post('/create-new-user', userController.createUser);
 
+// get user by id
+userRouter.get('/:id', userController.getUserById);
+
+// delete user by id
+userRouter.delete('/:id', userController.deleteUserById);
+
+// update user by id
+userRouter.put('/:id', userController.updateUserById);
+
+// get all users
+userRouter.get('/all', userController.getAllUsers);
+
 export default userRouter;
