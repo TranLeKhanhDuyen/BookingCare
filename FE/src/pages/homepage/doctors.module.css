@@ -1,0 +1,11 @@
+.doctor-content {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.doctor-title, .doctor-specialty {
+  text-align: center;
+}

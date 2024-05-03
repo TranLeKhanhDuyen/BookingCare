@@ -1,0 +1,21 @@
+* {
+  font-family: 'Roboto';
+  box-sizing: border-box;
+  padding: 0;
+}
+
+html {
+  font-family: 'Roboto';
+}
+
+.button {
+  cursor: pointer;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 10%;
+}

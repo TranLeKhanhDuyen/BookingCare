@@ -1,0 +1,48 @@
+.form-create-user {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-create-user input,
+.form-create-user select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn-create-user {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.btn-update-user {
+  margin: 0 auto;
+}
+
+.btn-close-form {
+  margin: 0 auto;
+}
+
+.btn-action {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 780px) {
+  .form-create-user {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn-create-user {
+    width: 30%;
+    grid-column: 1 / span 2;
+  }
+
+  .btn-close-form {
+    width: 50%;
+  }
+}

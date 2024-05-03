@@ -1,0 +1,150 @@
+.itemlink {
+  display: flex;
+  align-items: center;
+}
+
+/* BANNER */
+.itemlink-banner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.img-banner {
+  object-fit: cover;
+  color: transparent;
+  width: 1208px;
+  height: 402px;
+  border-radius: 25px;
+}
+
+/* SERVICE */
+.itemlink-service {
+  gap: 30px;
+  background: url('../../assets//backgrounds/background-item1.png');
+  border: 1px solid var(--gray-color);
+  padding: 20px 40px;
+  border-radius: 25px;
+}
+
+.img-service {
+  width: 56px;
+  height: 56px;
+}
+
+.itemlink-service:hover {
+  border: 1px solid var(--turquoise-dark-color);
+}
+
+/* SPECIALIST */
+.itemlink-specialist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--gray-color);
+  border-radius: 25px;
+  padding: 20px;
+  margin-left: 40px;
+}
+
+.img-specialist {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemlink-specialist:hover {
+  border-color: var(--turquoise-dark-color);
+}
+
+.itemlink-specialist:focus {
+  outline: none;
+  border-color: var(--turquoise-dark-color);
+}
+
+/* FACILITIES */
+.itemlink-facilities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  border: 1px solid var(--gray-color);
+  border-radius: 25px;
+  padding: 20px;
+  margin-left: 40px;
+  height: 254px;
+}
+
+.img-facilities {
+  width: 333px;
+  height: 156px;
+  object-fit: contain;
+}
+
+.itemlink-facilities:hover {
+  border-color: var(--turquoise-dark-color);
+}
+
+.itemlink-facilities:focus {
+  outline: none;
+  border-color: var(--turquoise-dark-color);
+}
+
+/* DOCTOR */
+.itemlink-doctor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.img-doctor {
+  border-radius: 50%;
+  width: 218px;
+  height: 218px;
+}
+
+/* HANDBOOK */
+.itemlink-handbook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.img-handbook {
+  width: 267px;
+  height: 140px;
+  object-fit: cover;
+  border: 1px solid var(--gray-color);
+  border-radius: 10px;
+}
+
+.itemlink-handbook:hover {
+  border-color: var(--turquoise-dark-color);
+}
+
+.itemlink-handbook:focus {
+  outline: none;
+  border-color: var(--turquoise-dark-color);
+}
+
+/* MEDIA */
+.itemlink-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: 10px;
+  padding: 15px 35px;
+}
+
+.img-media {
+  width: 165px;
+  height: 40px;
+  object-fit: contain;
+  /*  */
+}

@@ -1,0 +1,11 @@
+.select {
+  padding: 5px;
+  border: 1px solid var(--dark-gray-color);
+  outline: none;
+  border-radius: 5px;
+}
+
+.select:focus {
+  padding: 5px;
+  border-color: var(--turquoise-color);
+}

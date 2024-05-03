@@ -1,0 +1,38 @@
+.btn {
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 8rem;
+  height: 36px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem 1.6rem;
+}
+
+.btn-primary {
+  background-color: var(--turquoise-light-color);
+  border-radius: 8px;
+  font-weight: var(--fw-bold);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 16px var(--turquoise-light-color);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 8px 16px rgba(255, 145, 0, 0.24);
+}
+
+.btn-secondary {
+  background-color: var(--yellow-color);
+  border-radius: 8px;
+  font-weight: var(--fw-bold);
+}

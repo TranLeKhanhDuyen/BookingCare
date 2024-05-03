@@ -1,0 +1,19 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-color);
+  border-radius: 15px;
+  width: fit-content;
+  padding: 10px;
+  background-color: var(--white-color);
+}
+
+.search-container:focus-within {
+  border-color: var(--turquoise-color);
+}
+
+.input-search {
+  border: 1px transparent;
+  outline: none;
+  padding-left: 10px;
+}

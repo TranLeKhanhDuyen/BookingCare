@@ -1,0 +1,5 @@
+.text {
+  font-weight: var(--fw-normal);
+  font-size: var(--font-md);
+  color: var(--black-color);
+}

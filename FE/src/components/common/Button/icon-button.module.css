@@ -1,0 +1,71 @@
+.icon-btn {
+  border: none;
+  outline: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: all ease-in 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: none;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  background-color: transparent;
+  color: var(--icon-default-color);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-default-color {
+  color: var(--icon-default-color);
+  background-color: rgba(var(--info-color), 0.1);
+}
+
+.icon-default-color:hover {
+  background-color: rgba(var(--info-color), 0.3);
+}
+
+.icon-success-color {
+  color: rgb(var(--success-color));
+  background-color: rgba(var(--success-color), 0.1);
+}
+
+.icon-success-color:hover {
+  background-color: rgba(var(--success-color), 0.3);
+}
+
+.icon-warning-color {
+  color: rgb(var(--warning-color));
+  background-color: rgba(var(--warning-color), 0.1);
+}
+
+.icon-warning-color:hover {
+  background-color: rgba(var(--warning-color), 0.3);
+}
+
+.icon-error-color {
+  color: rgb(var(--error-color));
+  background-color: rgba(var(--error-color), 0.1);
+}
+
+.icon-error-color:hover {
+  background-color: rgba(var(--error-color), 0.3);
+}
+
+.icon-information-color {
+  color: rgb(var(--info-color));
+  background-color: rgba(var(--info-color), 0.1);
+}
+
+.icon-information-color:hover {
+  background-color: rgba(var(--info-color), 0.3);
+}
